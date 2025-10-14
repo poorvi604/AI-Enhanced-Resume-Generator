@@ -6,7 +6,7 @@ dotenv.config();
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 async function generateHighlight(name, role, skills) {
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
   const prompt = `Write a one-line professional resume summary for ${name}, applying for the role of ${role}, with skills in ${skills}.`;
 
@@ -19,5 +19,6 @@ async function generateHighlight(name, role, skills) {
     return `${name} is a skilled ${role} in ${skills.split(",")[0]}.`;
   }
 }
+
 
 module.exports = { generateHighlight };
