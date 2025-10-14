@@ -129,12 +129,23 @@ function renderEJS(templateName, data) {
   });
 }
 
-const open = require("open").default;
-
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${PORT}`);
-  open(`http://localhost:${PORT}`);
+// Use an async function to allow for dynamic import
+const startServer = async () => {
+  app.listen(PORT, async () => {
+    console.log(`🚀 Server running at http://localhost:${PORT}`);
+    try {
+      // Dynamically import the 'open' package
+      const { default: open } = await import('open');
+      await open(`http://localhost:${PORT}`);
+    } catch (err) {
+      console.error("Could not open browser:", err);
+    }
+  });
+};
+
+startServer();
 
 });
+
