@@ -60,14 +60,18 @@ app.post("/generate", async (req, res) => {
     const pdfBuffer = await page.pdf({ format: "A4" });
     await browser.close();
 
-    const transporter = nodemailer.createTransport({
-      host: "smtp.ethereal.email",
-      port: 587,
-      auth: {
-        user: "fabian.abbott29@ethereal.email",
-        pass: "6BQUsM9ckpAzPsHVcu"
-      }
-    });
+   const testAccount = await nodemailer.createTestAccount();
+
+        
+        const transporter = nodemailer.createTransport({
+            host: testAccount.smtp.host,
+            port: testAccount.smtp.port,
+            secure: testAccount.smtp.secure,
+            auth: {
+                user: "dorothy9@ethereal.email", 
+                pass: "9XGHkEsWWduJrXXVm8" 
+            }
+        });
 
     const mailOptions = {
       from: '"Resume Builder" <noreply@resumegen.com>',
@@ -132,4 +136,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
   open(`http://localhost:${PORT}`);
+
 });
