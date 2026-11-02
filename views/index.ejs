@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,4 +60,60 @@
   </main>
   <script src="/js/preview.js"></script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Resume Generator</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="icon" href="/icons/home.png" type="image/x-icon" />
+</head>
+<body>
+  <main class="container">
+    <h1>Build Your Resume</h1>
+    <form method="POST" id="resumeForm">
+      <div class="form-row">
+        <label for="name">Full Name</label>
+        <input type="text" name="name" required placeholder="Enter your name" />
+      </div>
+
+      <div class="form-row">
+        <label for="skills">Skills</label>
+        <input type="text" name="skills" required placeholder="e.g., JavaScript, React, Node.js" />
+      </div>
+
+      <div class="form-row">
+        <label for="role">Job Role</label>
+        <input type="text" name="role" id="role" required placeholder="e.g., Frontend Developer" />
+      </div>
+
+      <div class="form-row">
+        <label for="experience">Years of Experience</label>
+        <input type="number" name="experience" min="0" required placeholder="e.g., 2" />
+      </div>
+
+      <div class="form-row">
+        <label for="template">Resume Template</label>
+        <select id="template" name="template" required>
+          <option value="" disabled selected>Select Template</option>
+          <option value="classic">Classic</option>
+          <option value="modern">Modern</option>
+          <option value="elegant">Elegant</option>
+          <option value="creative">Creative</option>
+          <option value="minimal">Minimal</option>
+        </select>
+      </div>
+
+      <div class="button-row">
+
+        <!-- ✅ Preview route -->
+        <button type="submit" formaction="/preview">Preview Resume</button>
+      </div>
+
+    </form>
+  </main>
+  <script src="/js/preview.js"></script>
+</body>
+>>>>>>> 6faa202 (Update resume generator)
 </html>

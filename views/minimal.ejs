@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,4 +27,55 @@
   </section>
 
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title><%= name %>'s Resume</title>
+  <link rel="stylesheet" href="/css/<%= template %>.css" />
+  <link rel="icon" href="/icons/<%= template %>.png" type="image/x-icon" />
+</head>
+<body>
+  <h1><%= name %></h1>
+  <h2><%= role %></h2>
+
+  <section>
+    <h3>Skills</h3>
+    <p><%= skills %></p>
+  </section>
+
+  <section>
+    <h3>Experience</h3>
+    <p><%= experience %> year(s)</p>
+  </section>
+
+  <section>
+    <h3>Summary</h3>
+    <p><%= suggestedBullet %></p>
+  </section>
+   <form class="no-print" action="/generate" method="POST">
+
+  <input type="hidden" name="name" value="<%= name %>">
+  <input type="hidden" name="skills" value="<%= skills %>">
+  <input type="hidden" name="role" value="<%= role %>">
+  <input type="hidden" name="experience" value="<%= experience %>">
+  <input type="hidden" name="template" value="<%= template %>">
+  <input type="hidden" name="suggestedBullet" value="<%= suggestedBullet %>">
+
+  <input
+      type="email"
+      name="email"
+      placeholder="Enter email"
+      required
+  >
+
+  <button type="submit">
+      Generate & Send Resume
+  </button>
+
+</form>
+
+</body>
+>>>>>>> 6faa202 (Update resume generator)
 </html>

@@ -1,5 +1,19 @@
+<<<<<<< HEAD
 # Logs
 logs
+=======
+# Node modules 
+node_modules/
+
+# Sensitive environment variables
+.env
+
+# Platform-specific setup scripts 
+setup.bat
+setup.sh
+
+# Log files
+>>>>>>> 6faa202 (Update resume generator)
 *.log
 npm-debug.log*
 yarn-debug.log*
