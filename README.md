@@ -1,119 +1,214 @@
 # 🧠 AI-Powered Resume Generator
 
-Create elegant, dynamic resumes with built-in AI summarization, PDF export, and multiple visual themes — all in a sleek web app built using Node.js, EJS, and Google Gemini.
-
-## 🚀 Live Features
-
-- ✍️ User-friendly form to input name, role, skills, experience
-- 🎨 Multiple resume themes (Classic, Modern, Elegant, Creative, Minimal)
-- 🤖 Gemini API generates professional summary bullets based on user input
-- 📄 PDF export with styling via Puppeteer
-- 💼 Live preview with consistent AI output
-- 🧠 Single Gemini API call with summary reuse (hidden input transfer)
-- 📎 Custom favicons per theme & home page branding
-- 🔐 Environment configuration via `.env`
-- 📬 Email module (optional) using Nodemailer + Ethereal
+Create elegant, AI-enhanced resumes with multiple professional themes, AI-generated summaries, PDF export support, and email delivery. Built using Node.js, Express, EJS, Google Gemini, Puppeteer, and Nodemailer.
 
 ---
 
-## 🛠️ Technologies Used
+## 🚀 Features
 
-- **Backend**: Node.js, Express, EJS
-- **Frontend**: HTML5, CSS3, Vanilla JS
-- **AI**: Google AI Studio (Gemini API)
-- **PDF Export**: Puppeteer
-- **Utilities**: dotenv, open, nodemailer
+- ✍️ User-friendly resume form
+- 🎨 Multiple resume templates
+  - Classic
+  - Modern
+  - Elegant
+  - Creative
+  - Minimal
+- 🤖 AI-powered professional summary generation using Google Gemini
+- 👀 Resume preview before PDF generation
+- 📄 PDF export using Puppeteer
+- 📧 Email delivery with Ethereal Email preview support
+- 🧠 Single Gemini API call per resume generation flow
+- 🔐 Environment variable support with dotenv
+- ☁️ Render deployment ready
+
+---
+
+## 🛠️ Tech Stack
+
+### Backend
+- Node.js
+- Express.js
+- EJS
+
+### Frontend
+- HTML5
+- CSS3
+- Vanilla JavaScript
+
+### AI
+- Google Gemini API
+
+### PDF Generation
+- Puppeteer
+
+### Email Service
+- Nodemailer
+- Ethereal Email
+
+### Utilities
+- dotenv
 
 ---
 
 ## 📁 Project Structure
 
-ai-resume-generator/
-├── app.js                         # Main Express server file
-├── generateHighlight.js          # Gemini API integration for bullet summary
-├── .env                          # Stores Gemini API key securely
-├── package.json                  # Project metadata and dependencies
-├── public/                       # Static assets served via Express
-│   ├── css/                      # Stylesheets for form and resume templates
-│   │   ├── index.css
+```text
+AI-Enhanced-Resume-Generator/
+
+├── app.js
+├── generateHighlight.js
+├── package.json
+├── package-lock.json
+├── .env.example
+├── .gitignore
+
+├── public/
+│   ├── css/
+│   │   ├── styles.css
 │   │   ├── classic.css
 │   │   ├── modern.css
 │   │   ├── elegant.css
 │   │   ├── creative.css
 │   │   └── minimal.css
-│   ├── icons/                    # Custom favicons per theme + home page
+│   │
+│   ├── icons/
 │   │   ├── home.ico
 │   │   ├── classic.ico
 │   │   ├── modern.ico
 │   │   ├── elegant.ico
 │   │   ├── creative.ico
 │   │   └── minimal.ico
-│   ├── js/                       
-│   │   └── preview.js
-├── views/                        # EJS templates for rendering pages
-│   ├── index.ejs                 # Homepage: input form and theme selection
-│   ├── classic.ejs               # Resume template - Classic
-│   ├── modern.ejs                # Resume template - Modern
-│   ├── elegant.ejs               # Resume template - Elegant
-│   ├── creative.ejs              # Resume template - Creative
-│   └── minimal.ejs               # Resume template - Minimal
-├── README.md                     # Full project documentation
-├── node_modules/                 # Installed npm packages
-└── .gitignore                    # Ignore node_modules, .env, etc.
+│   │
+│   └── js/
+│       └── preview.js
+
+├── views/
+│   ├── index.ejs
+│   ├── classic.ejs
+│   ├── modern.ejs
+│   ├── elegant.ejs
+│   ├── creative.ejs
+│   └── minimal.ejs
+
+└── README.md
+```
+
 ---
 
 ## 🧰 Prerequisites
 
 - Node.js v18+
-- npm (comes with Node)
-- Git Bash or Terminal
+- npm
+- Git
 
 ---
 
-## ⚙️ Setup
+## ⚙️ Installation
 
+### 1. Clone Repository
 
-### Option 1: Manual Setup
+```bash
+git clone https://github.com/your-username/AI-Enhanced-Resume-Generator.git
 
-1. Clone or download the project
-2. Run:
-   ```bash
-   npm install
-   npm start
-### Option 2: One-Click Launch
+cd AI-Enhanced-Resume-Generator
+```
 
-1.  Windows: double-click setup.bat
-2.  macOS/Linux: run bash setup.sh from Terminal
+### 2. Install Dependencies
 
-### If Security Issues Error occures then use :
+```bash
+npm install
+```
 
-1. Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass (For temporary use)
- 
-2. Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned (Permanent, to be used cautiously)
+### 3. Create .env File
 
-🔐 API Key Setup
+Create a file named `.env` in the root directory.
 
-- Visit Google AI Studio
-- Create a Gemini API key
-- Add to your .env file:
+```env
+GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+---
+
+## ▶️ Run Locally
+
+```bash
+npm start
+```
+
+Open:
+
+```text
+http://localhost:3000
+```
+
+---
+
+## 🔐 Gemini API Setup
+
+1. Visit Google AI Studio
+2. Generate an API key
+3. Add the API key to your `.env` file
+
+Example:
+
+```env
 GEMINI_API_KEY=your_key_here
+```
 
+---
 
-🎨 Theming & Favicon
+## 🎨 Available Resume Templates
 
-- Each resume theme has its own favicon (public/icons/*.ico)
-- Themes are passed via template and dynamically rendered
-- Add new themes easily by extending views and icons
+- Classic
+- Modern
+- Elegant
+- Creative
+- Minimal
 
-✨ AI Summary Flow
+---
 
-- Summary is generated once during preview
-- Injected visibly into template and passed via hidden input
-- Reused during PDF generation (no extra API calls)
-- Fallback to basic summary if Gemini API fails
+## 🤖 AI Summary Workflow
 
-🛡️ Pro Tip for Distribution
-If the project is shared with others (especially less technical users):
-- After cloning: npm install
-  --If PDF fails to generate: run npx puppeteer install
-  --If at the terminal Gemini Generation error occurs: npm install @google/generative-ai@latest
+The application follows an optimized workflow:
+
+```text
+User Form
+    ↓
+Preview Resume
+    ↓
+Gemini API Call
+    ↓
+AI Summary Generated
+    ↓
+Resume Preview
+    ↓
+Generate PDF
+    ↓
+Reuse Existing Summary
+    ↓
+Email Delivery
+```
+
+### Benefits
+
+✅ Only one Gemini API call
+
+✅ Faster PDF generation
+
+✅ Reduced token consumption
+
+✅ Better user experience
+
+✅ Lower operating cost
+
+---
+
+## 📄 PDF Export
+
+PDFs are generated using Puppeteer.
+
+Features:
+
+- Theme-aware styling
+- Print-friendly formatting
+- Dynamic AI-generated 
