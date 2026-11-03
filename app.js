@@ -85,7 +85,7 @@ app.post("/generate", async (req, res) => {
       suggestedBullet,
       template
     });
-    const browser = await puppeteer.launch({headless: true, executablePath: "/opt/render/.cache/puppeteer/chrome/linux-138.0.7204.157/chrome-linux64/chrome",
+    const browser = await puppeteer.launch({headless: true, channel: "chrome",
       args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"
       ]});
     const page = await browser.newPage();
