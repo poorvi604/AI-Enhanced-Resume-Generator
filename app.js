@@ -1,4 +1,4 @@
-// const chromium = require("@sparticuz/chromium");
+const puppeteer = require("puppeteer");
 const dotenv = require("dotenv");
 dotenv.config(); 
 
@@ -6,7 +6,6 @@ const express = require("express");
 
 const nodemailer = require("nodemailer");
 const path = require("path");
-const puppeteer = require("puppeteer");
 const fs = require("fs");
 const { generateHighlight } = require("./generateHighlight");
 
@@ -86,10 +85,14 @@ app.post("/generate", async (req, res) => {
       suggestedBullet,
       template
     });
-    console.log("PUPPETEER_EXECUTABLE_PATH:", process.env.PUPPETEER_EXECUTABLE_PATH);
-    const browser = await puppeteer.launch({headless: true, 
-      args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"
-      ]});
+    const browser = await puppeteer.launch({
+  headless: true,
+  args: [
+    "--no-sandbox",
+    "--disable-setuid-sandbox",
+    "--disable-dev-shm-usage"
+  ]
+});
     const page = await browser.newPage();
     await page.setContent(htmlContent, { waitUntil: "networkidle0" });
     const pdfBuffer = await page.pdf({ format: "A4" , printBackground: true });
