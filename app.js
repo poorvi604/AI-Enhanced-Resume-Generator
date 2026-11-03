@@ -1,3 +1,4 @@
+// const chromium = require("@sparticuz/chromium");
 const dotenv = require("dotenv");
 dotenv.config(); 
 
@@ -85,7 +86,7 @@ app.post("/generate", async (req, res) => {
       suggestedBullet,
       template
     });
-    const browser = await puppeteer.launch({headless: true, channel: "chrome",
+    const browser = await puppeteer.launch({headless: true, executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
       args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"
       ]});
     const page = await browser.newPage();
@@ -95,6 +96,7 @@ app.post("/generate", async (req, res) => {
 
 
     const testAccount = await nodemailer.createTestAccount();
+
     const transporter = nodemailer.createTransport({
       host: testAccount.smtp.host,
       port: testAccount.smtp.port,
